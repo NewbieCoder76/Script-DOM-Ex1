@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Spell Generator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Prepare Your Spells Fellow Mage</h1>
+    <div id="spells">
+        <h3>Available Incantations</h3>
+        <ul id="ingredientsList">
+            <li>Dragon Scale</li>
+            <li>Phoenix Feather</li>
+            <li>Unicorn Horn</li>
+            <li>Healing Cirlce</li>
+            <li>Undead Recall</li>
+        </ul>
+    </div>
+    <div id="spellArea">
+    </div>
+    <div>
+        <button id="gen">Generate Spell</button>
+        <button id="reset">Reset Button</button>
+    </div>
+    <script>
+        const resetButton = document.getElementById("reset")
+        resetButton.addEventListener("click", function resetSpell() 
+        {spellArea.textContent = "";})
+    </script>
+
+    <script>
+        const ingredientsList = document.querySelectorAll("#ingredientsList li")
+        const generateSpell = document.getElementById("gen")
+        generateSpell.addEventListener("click", function generate()
+        {let countdown = 3;
+        spellArea.textContent = countdown;
+
+    const countdownInterval = setInterval(() => {
+        countdown--;
+        spellArea.textContent = countdown;
+        if (countdown === 0) {
+            clearInterval(countdownInterval); 
+
+            const randomIndex = Math.floor(Math.random() * ingredientsList.length);
+            const randomSpell = ingredientsList[randomIndex].textContent;
+            
+            spellArea.textContent = `${randomSpell} has been casted`;
+        }
+    }, 1000);
+    }
+)   
+    </script>
+</body>
+</html> 
